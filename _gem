@@ -45,6 +45,7 @@ _gem() {
       "fetch[Download a gem and place it in the current directory]" \
       "generate_index[Generates the index files for a gem server directory]" \
       "help[Provide help on the 'gem' command]" \
+      "inabox[Publish gems to gemserver]" \
       "install[Install a gem into the local repository]" \
       "list[Display gems whose name starts with STRING]" \
       "lock[Generate a lockdown list of gems]" \
@@ -88,6 +89,7 @@ __gem_help_arguments() {
     "fetch"
     "generate_index"
     "help"
+    "inabox"
     "install"
     "list"
     "lock"
@@ -217,6 +219,12 @@ _gem_generate_index() {
 _gem_help() {
   _arguments \
     ":argument:__gem_help_arguments" \
+    $gem_general_flags && ret=0
+}
+
+_gem_inabox() {
+  _arguments \
+    "*:files:_files" \
     $gem_general_flags && ret=0
 }
 
